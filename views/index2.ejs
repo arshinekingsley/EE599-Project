@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  
+  <title>Image Editor</title>
+  <script src="https://unpkg.com/ml5@0.4.3/dist/ml5.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js"></script>
+  <script src= "https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.js"></script> </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.sound.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Image Classifier</h1>
+  </div>
+<br>
+<div id="output"> </div>
+<br>
+<script>
+ function setup() {
+  let img = createImg('/uploads/myImage.jpg');
+  let mobilenet = ml5.imageClassifier("MobileNet", ModelReady);
+  console.log(p5.version);
+  let prediction =mobilenet.predict(img, gotResults);
+}
+
+function ModelReady(){
+  console.log('Model is Ready!')
+    }
+
+  function gotResults(err, results) {
+  console.log(results);
+  var labelname=results[0].label;
+  var probability=results[0].confidence;
+  document.getElementById("output").innerHTML="<h5>This is a </h5>"+labelname+" <h5> with confidence: </h5>"+probability;
+}
+</script>
+  <script  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>   
+
+</body>
+</html>
