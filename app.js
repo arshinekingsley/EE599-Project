@@ -65,18 +65,53 @@ app.post('/upload', (req, res) => {
         Jimp.read('public/uploads/'+req.file.filename)
         .then(lenna => {
           return lenna
-            .greyscale()
-            .resize(256,256)
+            .grayscale()
             .quality(60) // set greyscale
             .write('public/uploads/grayscale.jpg'); // save
         })
         .catch(err => {
           console.error(err);
-        });        
+        });
+        
+        Jimp.read('public/uploads/'+req.file.filename)
+        .then(lenna2 => {
+          return lenna2
+            .sepia()
+            .quality(60) // set greyscale
+            .write('public/uploads/sepia.jpg'); // save
+        })
+        .catch(err => {
+          console.error(err);
+        });
+
+        Jimp.read('public/uploads/'+req.file.filename)
+        .then(lenna3 => {
+          return lenna3
+            .blur(2)
+            .quality(60) // set greyscale
+            .write('public/uploads/blur.jpg'); // save
+        })
+        .catch(err => {
+          console.error(err);
+        });
+        
+        Jimp.read('public/uploads/'+req.file.filename)
+        .then(lenna4 => {
+          return lenna4
+            .resize(256,256)  
+            .quality(60) // set greyscale
+            .write('public/uploads/resize.jpg'); // save
+        })
+        .catch(err => {
+          console.error(err);
+        });
         res.render('index', {
           msg: 'File Uploaded!',
           file: `uploads/${req.file.filename}`,
-          file2: `uploads/grayscale.jpg`
+          file2: `uploads/grayscale.jpg`,
+          file3: `uploads/sepia.jpg`,
+          file4: `uploads/blur.jpg`,
+          file5: `uploads/resize.jpg`
         });
     }
   }});
