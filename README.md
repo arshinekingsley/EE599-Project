@@ -2,7 +2,7 @@ EE 599 Special Topics Project
 
 Project: Image Processing and Classification using Express, Multer, Jimp, P5 and ML5
 
-Description: An application to reneder your image with special effects, and classify the image.
+Description: An application to render your image with special effects, and classify the image.
 Team: Individual 
 Members: Arshine Kingsley
 
