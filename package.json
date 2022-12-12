@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "ejs": "^2.7.4",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "fabric": "^3.6.3",
     "histogram": "^3.0.3",
     "jimp": "^0.10.3",
